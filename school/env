@@ -1,0 +1,2 @@
+STUDENT_SERVICE=localhost:8082
+TEACHER_SERVICE=localhost:8083

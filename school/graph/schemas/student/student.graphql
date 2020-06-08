@@ -1,0 +1,34 @@
+type Student {
+    Id : Int!
+    Name:String
+    Age:String
+    Standard: String
+    SchoolCode:     Int
+    IdentityNumber:Int
+}
+extend type Query {
+    getStudents(
+        schoolCode: Int!
+    ): [Student]!
+    getStudentById(
+        Id: Int!
+        schoolcode: Int!
+    ): Student!
+}
+
+extend  type Mutation {
+    #create student
+    insertStudent(input: StudentInput ) : Student!
+    #delete student
+    deleteStudent(ID : Int!): Student!
+    #update student
+    updateStudent(ID:Int!,input: StudentInput) : Student!
+}
+
+input StudentInput {
+    Name:String
+    Age:String
+    Standard: String
+    SchoolCode:     Int
+    IdentityNumber:Int
+}

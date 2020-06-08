@@ -1,0 +1,37 @@
+scalar Time
+type Teacher {
+    Id : Int!
+    Name: String!
+    Age : String!
+    Department: String!
+    IsHead:    Boolean!
+    SchoolCode: Int!
+    IdentityNumber: Int!
+}
+type Query {
+    getTeachers(
+        schoolCode: Int!
+    ): [Teacher]!
+    getTeacherById(
+        Id: Int!
+        schoolcode: Int!
+    ): Teacher!
+}
+
+type Mutation {
+    #create student
+    insertTeacher(input: TeacherInput ) : Teacher!
+    #delete student
+    deleteTeacher(ID : Int!): Teacher!
+    #update student
+    updateTeacher(ID:Int!,input: TeacherInput) : Teacher!
+}
+
+input TeacherInput {
+    Name: String!
+    Age : String!
+    Department: String!
+    IsHead:    Boolean!
+    SchoolCode: Int!
+    IdentityNumber: Int!
+}

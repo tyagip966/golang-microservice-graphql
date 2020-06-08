@@ -1,0 +1,12 @@
+schema:
+  - schemas/**/*.graphql
+omit_slice_element_pointers: false
+models:
+  Student:
+    model: github.com/tyagip966/common-repo/models.Student
+  StudentInput:
+    model: github.com/tyagip966/common-repo/models.StudentInput
+  Teacher:
+    model: github.com/tyagip966/common-repo/models.Teacher
+  TeacherInput:
+    model: github.com/tyagip966/common-repo/models.TeacherInput
