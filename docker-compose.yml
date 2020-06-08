@@ -1,0 +1,36 @@
+version: "3.6"
+services:
+  student-db:
+    image: "psql:latest"
+    restart: always
+  student:
+    build:
+      context: "./student"
+      dockerfile: "Dockerfile"
+    depends_on:
+      - "database-db"
+    environment:
+      DATABASE_URL: "database-db:27017"
+  teacher-db:
+    image: "mongo:latest"
+    restart: always
+  teacher:
+    build:
+      context: "./teacher"
+      dockerfile: "Dockerfile"
+    depends_on:
+      - "teacher-db"
+    environment:
+      DATABASE_URL: "teacher-db:5432"
+  graphql:
+    build:
+      context: "./api-gateway"
+      dockerfile: "Dockerfile"
+    ports:
+      - "8000:8080"
+    depends_on:
+      - "student"
+      - "teacher"
+    environment:
+      STUDENT_SERVICE_URL: "student:8081"
+      TEACHER_SERVICE_URL: "teacher:8081"
